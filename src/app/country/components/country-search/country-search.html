@@ -1,0 +1,21 @@
+<section class="flex flex-row gap-2 mt-2">
+  <input
+    type="text"
+    class="input input-bordered mr-2 w-56"
+    [placeholder]="placeholder()"
+    autofocus
+    #txtCapital
+    (input)="searchTerm($event.target.value)"
+  />
+
+    <!-- <input
+    type="text"
+    class="input input-bordered mr-2 w-56"
+    placeholder="Search by capital..."
+    autofocus
+    #txtCapital
+    (input)="searchTerm(txtCapital.value)"
+  /> -->
+  <button class="btn btn-primary" (click)="searchTerm(txtCapital.value)">Buscar</button>
+
+</section>
