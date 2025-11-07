@@ -22,7 +22,11 @@
                     </td>
                     <td>{{item.name}}</td>
                     <td>{{item.capital}}</td>
-                    <td>{{item.population}}</td>
+                    <td>
+                        <span class="badge bg-secondary">
+                            {{item.population | number}}
+                        </span>
+                    </td>
                     <td>
                         <a href="" class="link-primary">Mas informacion</a>
                     </td>

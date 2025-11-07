@@ -1,2 +1,18 @@
-<app-country-search (searchCountryTerm)="searchTerm($event)" placeholder="Buscar país por capital"></app-country-search>
-<app-country-list [countries]="countries()"></app-country-list>
+<!-- <app-country-search (searchCountryTerm)="searchTerm($event)" placeholder="Buscar país por capital"></app-country-search> -->
+<!-- @if (isError()) {
+    <div class="alert alert-danger mt-3" role="alert">
+        {{isError()}}
+    </div>
+} @else {
+    <app-country-list [countries]="countries()"></app-country-list>
+} -->
+<app-country-search (searchCountryTerm)="query.set($event)" placeholder="Buscar país por capital"></app-country-search>
+<!-- {{countryResource.isLoading()}} -->
+@if (countryResource.error()) {
+    <div class="alert alert-danger mt-3" role="alert">
+        {{countryResource.error()}}
+    </div>
+} @if(countryResource.hasValue()) {
+    <app-country-list [countries]="countryResource.value()"></app-country-list>
+}
+

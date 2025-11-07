@@ -12,7 +12,8 @@ export class CountryMapper {
             cca2: restCountry.cca2,
             flag: restCountry.flag,
             flagSvg: restCountry.flags.svg,
-            name: restCountry.name.common,
+            // name: restCountry.name.common,
+            name: restCountry.translations["spa"].common ?? 'No Name',
             population: restCountry.population
         }
     }
