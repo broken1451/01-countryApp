@@ -26,4 +26,16 @@ export class CountryService {
 
   }
 
+  searchCountryByName(query: string): Observable<Country[]> {
+    
+    query = query.toLowerCase().trim();
+    return this.httpClient.get<CountryResponse[]>(`${environment.apiUrl}/name/${query}`).pipe(
+      map((countries) => CountryMapper.restCountryToCountries(countries)),
+      catchError(() => {
+        return throwError(() => new Error(`No se encontraron países con el nombre "${query}"`));
+      })
+    );
+
+  }
+
 }

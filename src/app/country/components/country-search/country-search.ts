@@ -9,8 +9,7 @@ import { Component, input, output, model } from '@angular/core';
 export class CountrySearch {
 
   public searchCountryTerm = output<string>();
-  public placeholder = input<string>('Buscar país');
-  age       = model(0);   
+  public placeholder = input<string>('Buscar país');  
 
   searchTerm(term: string) {
     this.searchCountryTerm.emit(term);
