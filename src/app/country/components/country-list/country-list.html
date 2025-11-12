@@ -32,6 +32,50 @@
                     </td>
                 </tr>
             }
+
+    
+            @if (errMessage()) {
+                <tr>
+                    <td colspan="8">
+                        <div class="alert alert-danger text-center" role="alert">
+                            {{errMessage()}}
+                        </div>
+                    </td>
+                </tr>
+            }
+
+            @if (countries().length == 0 &&  !isLoading()) {
+                <tr>
+                    <td colspan="8">
+                        <div class="alert alert-warning text-center" role="alert">
+                            No hay países para mostrar
+                        </div>
+                    </td>
+                </tr>
+            }
+            
+            @if (isLoading()) {
+                @if (countries().length == 0 && isLoading()) {
+                    <tr>
+                        <td colspan="8">
+                            <div class="alert alert-warning text-center" role="alert">
+                                No hay países para mostrar
+                            </div>
+                        </td>
+                    </tr>
+                } @else {
+                    <tr>
+                        <td colspan="8">
+                            <div class="d-flex justify-content-center my-2">
+                                <div class="spinner-border" role="status">
+                                    <span class="">Loading...</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+
         </tbody>
 
     </table>

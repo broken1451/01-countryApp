@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { map, Observable, catchError, throwError } from 'rxjs';
+import { map, Observable, catchError, throwError, delay } from 'rxjs';
 import { CountryResponse } from '../interfaces/country.interface';
 import { CountryMapper } from '../mappers/country.mapper';
 import { Country } from '../interfaces/countri.interface';
@@ -31,6 +31,7 @@ export class CountryService {
     query = query.toLowerCase().trim();
     return this.httpClient.get<CountryResponse[]>(`${environment.apiUrl}/name/${query}`).pipe(
       map((countries) => CountryMapper.restCountryToCountries(countries)),
+      delay(3000),
       catchError(() => {
         return throwError(() => new Error(`No se encontraron países con el nombre "${query}"`));
       })
