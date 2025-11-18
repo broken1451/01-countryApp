@@ -39,4 +39,19 @@ export class CountryService {
 
   }
 
+
+  searchCountryByAlphaCode(alpha: string): Observable<Country[]> {
+    
+    return this.httpClient.get<CountryResponse[]>(`${environment.apiUrl}/alpha/${alpha}`).pipe(
+      map((countries) => CountryMapper.restCountryToCountries(countries)),
+      map((cuntry) => cuntry.splice(0, 1)),
+      // map((cuntry) => cuntry.at(0) ? [cuntry.at(0)!] : []),
+      delay(3000),
+      catchError(() => {
+        return throwError(() => new Error(`No se encontraron países con el código alfa "${alpha}"`));
+      })
+    );
+
+  }
+
 }

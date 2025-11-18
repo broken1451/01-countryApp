@@ -6,7 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-country-list',
-  imports: [DecimalPipe, JsonPipe],
+  imports: [DecimalPipe],
   templateUrl: './country-list.html',
   styleUrl: './country-list.scss',
 })
